@@ -19,6 +19,8 @@ compiler gcc
 imap <C-S> <esc><C-S>a
 nmap <F2> :w<CR>
 imap <F2> <ESC><F2>a
+nmap <F8> :mak!<CR>
+imap <F8> <ESC><F8>
 nmap <F9> <F2>:!g++.exe % -g -Wall -o %< >error 2>&1 <CR>:cfile error<CR>:cw<CR>
 imap <F9> <ESC><F9>
 nmap <C-F9> <F9>:ccl<CR>:!%< <CR> 
@@ -34,6 +36,20 @@ set cindent
 set guioptions-=m
 set guioptions-=T
 set nobackup
+
+"ÎÄ¼þä¯ÀÀÆ÷
+nmap <M-F3> :tabnew<cr>:Exp<cr>
+imap <M-F3> <ESC><M-F3>
+nmap <M-e> :Exp<cr>
+imap <M-e> <ESC><M-e>
+let g:netrw_liststyle=3
+let g:netrw_altv=1
+let g:netrw_winsize=50
+
+"ÍË³ö
+nmap <M-q> :q<cr>
+imap <M-q> <ESC><M-q>
+
 
 highlight Pmenu    guibg=darkgrey  guifg=black
 highlight PmenuSel guibg=lightgrey guifg=black
