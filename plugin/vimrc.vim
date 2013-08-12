@@ -45,11 +45,34 @@ imap <M-e> <ESC><M-e>
 let g:netrw_liststyle=3
 let g:netrw_altv=1
 let g:netrw_winsize=50
+let g:netrw_keepdir=0
 
 "退出
 nmap <M-q> :q<cr>
 imap <M-q> <ESC><M-q>
 
+"平滑滚动
+function SmoothScroll(up)
+    if a:up
+        let scrollaction="\<C-Y>"
+    else
+        let scrollaction="\<C-E>"
+    endif
+    exec "normal " . scrollaction
+    redraw
+    let counter=1
+    while counter<&scroll
+        let counter+=1
+        sleep 10m
+        redraw
+        exec "normal " . scrollaction
+    endwhile
+endfunction
+"平滑滚动
+nnoremap <pageUp> :call SmoothScroll(1)<CR>
+nnoremap <pageDown> :call SmoothScroll(0)<CR>
+inoremap <pageUp> <Esc>:call SmoothScroll(1)<CR>a
+inoremap <pageDown> <Esc>:call SmoothScroll(0)<CR>i
 
 highlight Pmenu    guibg=darkgrey  guifg=black
 highlight PmenuSel guibg=lightgrey guifg=black
